@@ -1,0 +1,912 @@
+/* ====================================
+   STUNNING VALENTINE'S DAY THEME CSS
+   Ultra-Premium Romantic Design 💕
+   ==================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* ========== GLOBAL STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --rose-red: #ff0844;
+  --deep-pink: #ff2e63;
+  --coral-pink: #ff6b9d;
+  --blush-pink: #ffb4c8;
+  --powder-pink: #ffd4e5;
+  --romantic-purple: #b83b5e;
+  --soft-white: #fef5f8;
+  --gold-accent: #ffd700;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  background: #000;
+}
+
+/* ========== ANIMATED MULTI-LAYER BACKGROUND ========== */
+.home-container,
+.success-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #0f0015;
+}
+
+/* Layer 1: Animated Gradient Base */
+.home-container::before,
+.success-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 8, 68, 0.4) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 46, 99, 0.4) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(184, 59, 94, 0.3) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 30% 80%,
+      rgba(255, 107, 157, 0.35) 0%,
+      transparent 50%
+    ),
+    linear-gradient(135deg, #1a0520 0%, #2d0a3d 25%, #1f0833 50%, #0f0015 100%);
+  animation: backgroundPulse 20s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes backgroundPulse {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(5%, 5%) scale(1.05) rotate(1deg);
+  }
+  66% {
+    transform: translate(-5%, 3%) scale(1.03) rotate(-1deg);
+  }
+}
+
+/* Layer 2: Floating Orbs */
+.home-container::after,
+.success-container::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 20%;
+  right: -10%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 46, 99, 0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: floatOrb 25s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes floatOrb {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-100px, -50px);
+  }
+  50% {
+    transform: translate(-50px, 100px);
+  }
+  75% {
+    transform: translate(50px, -80px);
+  }
+}
+
+/* ========== PARTICLE SYSTEM ========== */
+.home-container,
+.success-container {
+  overflow: hidden;
+}
+
+/* Create floating particles with pseudo-elements */
+.home-card::before,
+.home-card::after,
+.success-card::before,
+.success-card::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--blush-pink);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-card::before {
+  top: 10%;
+  left: 20%;
+  animation: particleFloat1 8s ease-in-out infinite;
+  box-shadow:
+    0 0 20px var(--coral-pink),
+    0 0 40px var(--deep-pink);
+}
+
+.home-card::after {
+  top: 70%;
+  right: 15%;
+  animation: particleFloat2 10s ease-in-out infinite;
+  box-shadow:
+    0 0 20px var(--blush-pink),
+    0 0 40px var(--coral-pink);
+}
+
+@keyframes particleFloat1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(100px, -150px) scale(3);
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes particleFloat2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-120px, 100px) scale(2.5);
+    opacity: 0.5;
+  }
+  85% {
+    opacity: 0.2;
+  }
+}
+
+/* ========== ROSE PETALS FALLING ========== */
+.rose-petals {
+  position: fixed;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--rose-red), var(--coral-pink));
+  border-radius: 50% 0 50% 0;
+  opacity: 0.7;
+  animation: petalFall linear infinite;
+}
+
+.petal:nth-child(1) {
+  left: 10%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+.petal:nth-child(2) {
+  left: 25%;
+  animation-duration: 18s;
+  animation-delay: 2s;
+}
+.petal:nth-child(3) {
+  left: 40%;
+  animation-duration: 12s;
+  animation-delay: 4s;
+}
+.petal:nth-child(4) {
+  left: 55%;
+  animation-duration: 20s;
+  animation-delay: 1s;
+}
+.petal:nth-child(5) {
+  left: 70%;
+  animation-duration: 16s;
+  animation-delay: 3s;
+}
+.petal:nth-child(6) {
+  left: 85%;
+  animation-duration: 14s;
+  animation-delay: 5s;
+}
+
+@keyframes petalFall {
+  0% {
+    top: -10%;
+    transform: translateX(0) rotateZ(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateX(30px) rotateZ(90deg) rotateY(180deg);
+  }
+  50% {
+    transform: translateX(-30px) rotateZ(180deg) rotateY(360deg);
+  }
+  75% {
+    transform: translateX(20px) rotateZ(270deg) rotateY(540deg);
+  }
+  100% {
+    top: 120%;
+    transform: translateX(0) rotateZ(360deg) rotateY(720deg);
+  }
+}
+
+/* ========== GLOWING HEARTS BACKGROUND ========== */
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart-glow {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0;
+  animation: heartGlow 8s ease-in-out infinite;
+  filter: blur(2px);
+  text-shadow:
+    0 0 10px var(--rose-red),
+    0 0 20px var(--deep-pink),
+    0 0 30px var(--coral-pink);
+}
+
+.heart-glow:nth-child(1) {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+  content: "💖";
+}
+.heart-glow:nth-child(2) {
+  top: 25%;
+  right: 15%;
+  animation-delay: 2s;
+  content: "💗";
+}
+.heart-glow:nth-child(3) {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+  content: "💕";
+}
+.heart-glow:nth-child(4) {
+  bottom: 30%;
+  right: 10%;
+  animation-delay: 6s;
+  content: "❤️";
+}
+
+@keyframes heartGlow {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translateY(0);
+  }
+  10% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.5) translateY(-20px);
+  }
+  90% {
+    opacity: 0.15;
+  }
+}
+
+/* ========== LUXURY CARD DESIGN ========== */
+.home-card {
+  background: rgba(254, 245, 248, 0.01);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border-radius: 30px;
+  padding: 25px 35px;
+  box-shadow:
+    0 8px 32px 0 rgba(255, 8, 68, 0.2),
+    0 30px 60px 0 rgba(184, 59, 94, 0.15),
+    inset 0 0 100px rgba(255, 107, 157, 0.05),
+    0 0 60px rgba(255, 46, 99, 0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 85%;
+  position: relative;
+  border: 2px solid rgba(255, 180, 200, 0.3);
+  animation: cardBreath 4s ease-in-out infinite;
+  z-index: 10;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.success-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.95) 0%,
+    rgba(255, 218, 224, 0.95) 50%,
+    rgba(255, 240, 245, 0.95) 100%
+  );
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border-radius: 30px;
+  padding: 25px 40px;
+  box-shadow:
+    0 8px 32px 0 rgba(255, 8, 68, 0.2),
+    0 30px 60px 0 rgba(184, 59, 94, 0.15),
+    inset 0 0 100px rgba(255, 255, 255, 0.15),
+    0 0 60px rgba(255, 46, 99, 0.1);
+  text-align: center;
+  max-width: 650px;
+  width: 85%;
+  position: relative;
+  border: 2px solid rgba(255, 180, 200, 0.4);
+  animation: cardBreath 4s ease-in-out infinite;
+  z-index: 10;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+@keyframes cardBreath {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 32px 0 rgba(255, 8, 68, 0.2),
+      0 30px 60px 0 rgba(184, 59, 94, 0.15),
+      inset 0 0 100px rgba(255, 107, 157, 0.05),
+      0 0 60px rgba(255, 46, 99, 0.1);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    box-shadow:
+      0 12px 40px 0 rgba(255, 8, 68, 0.25),
+      0 40px 80px 0 rgba(184, 59, 94, 0.2),
+      inset 0 0 120px rgba(255, 107, 157, 0.08),
+      0 0 80px rgba(255, 46, 99, 0.15);
+    transform: translateY(-10px) scale(1.02);
+  }
+}
+
+/* Decorative Corner Flourishes */
+.home-card::before,
+.success-card::before {
+  content: "✦";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  font-size: 2rem;
+  color: var(--gold-accent);
+  text-shadow:
+    0 0 5px var(--gold-accent),
+    0 0 10px var(--rose-red);
+  animation: sparkleRotate 4s ease-in-out infinite;
+}
+
+.home-card::after,
+.success-card::after {
+  content: "✦";
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  font-size: 2rem;
+  color: var(--gold-accent);
+  text-shadow:
+    0 0 5px var(--gold-accent),
+    0 0 10px var(--rose-red);
+  animation: sparkleRotate 4s ease-in-out infinite reverse;
+}
+
+@keyframes sparkleRotate {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.3);
+    opacity: 1;
+  }
+}
+
+/* ========== STUNNING TYPOGRAPHY ========== */
+.question {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(
+    135deg,
+    var(--blush-pink) 75%,
+    var(--powder-pink) 100%
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  animation: gradientFlow 6s ease infinite;
+  line-height: 1.4;
+  text-shadow: 0 0 10px rgba(255, 8, 68, 0.15);
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.question::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--rose-red), var(--deep-pink));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: blur(20px);
+  opacity: 0.5;
+}
+
+@keyframes gradientFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ========== BUTTON CONTAINER ========== */
+.button-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  perspective: 1000px;
+}
+
+/* ========== ULTRA YES BUTTON ========== */
+.yes-button {
+  padding: 14px 45px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--soft-white);
+  background: linear-gradient(
+    135deg,
+    var(--rose-red),
+    var(--deep-pink),
+    var(--romantic-purple)
+  );
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow:
+    0 8px 20px rgba(255, 8, 68, 0.3),
+    0 3px 10px rgba(255, 46, 99, 0.2),
+    inset 0 0 15px rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+  animation: buttonPulse 2.5s ease-in-out infinite;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform-style: preserve-3d;
+}
+
+/* Ripple Effect */
+.yes-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.8s,
+    height 0.8s;
+}
+
+.yes-button:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+/* Shimmer Effect */
+.yes-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  animation: shimmerSweep 3s ease-in-out infinite;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+.yes-button:hover {
+  transform: translateY(-8px) scale(1.12) rotateX(5deg);
+  box-shadow:
+    0 12px 25px rgba(255, 8, 68, 0.4),
+    0 5px 15px rgba(255, 46, 99, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.12),
+    0 0 40px rgba(255, 8, 68, 0.2);
+  background-position: 100% 50%;
+}
+
+.yes-button:active {
+  transform: translateY(-4px) scale(1.08);
+}
+
+@keyframes buttonPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 20px rgba(255, 8, 68, 0.3),
+      0 3px 10px rgba(255, 46, 99, 0.2),
+      inset 0 0 15px rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 10px 25px rgba(255, 8, 68, 0.4),
+      0 5px 12px rgba(255, 46, 99, 0.3),
+      inset 0 0 20px rgba(255, 255, 255, 0.1),
+      0 0 30px rgba(255, 8, 68, 0.15);
+  }
+}
+
+/* ========== ELUSIVE NO BUTTON ========== */
+.no-button {
+  padding: 14px 45px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--rose-red);
+  background: rgba(254, 245, 248, 0.9);
+  backdrop-filter: blur(10px);
+  border: 3px solid var(--rose-red);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow:
+    0 5px 15px rgba(255, 8, 68, 0.2),
+    inset 0 0 15px rgba(255, 107, 157, 0.05);
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.no-button.moved {
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: absolute;
+}
+
+.no-button.peek {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  animation: peekBounce 1s ease-in-out infinite;
+  z-index: 1000;
+}
+
+@keyframes peekBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.no-button:hover {
+  background: rgba(255, 107, 157, 0.2);
+  transform: scale(1.05);
+  border-color: var(--deep-pink);
+}
+
+/* ========== SUCCESS PAGE EXCELLENCE ========== */
+.success-container {
+  padding: 40px;
+}
+
+.success-card {
+  animation:
+    successAppear 1s ease-out,
+    successGlow 3s ease-in-out infinite 1s;
+}
+
+@keyframes successAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes successGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 32px 0 rgba(255, 8, 68, 0.2),
+      0 30px 60px 0 rgba(184, 59, 94, 0.15),
+      inset 0 0 100px rgba(255, 107, 157, 0.05),
+      0 0 60px rgba(255, 46, 99, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 12px 40px 0 rgba(255, 8, 68, 0.25),
+      0 40px 80px 0 rgba(184, 59, 94, 0.2),
+      inset 0 0 120px rgba(255, 107, 157, 0.1),
+      0 0 80px rgba(255, 46, 99, 0.15);
+  }
+}
+
+/* ========== SUCCESS TITLE ========== */
+.success-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  background: linear-gradient(
+    135deg,
+    var(--rose-red),
+    var(--deep-pink),
+    var(--coral-pink)
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  animation:
+    titleShine 4s ease-in-out infinite,
+    titleBounce 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 8, 68, 0.2));
+}
+
+@keyframes titleShine {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes titleBounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.05);
+  }
+}
+
+/* ========== CELEBRATION GIF ========== */
+.celebration-gif {
+  width: 240px;
+  height: 240px;
+  border-radius: 25px;
+  margin: 20px auto;
+  box-shadow:
+    0 10px 25px rgba(255, 8, 68, 0.25),
+    0 0 40px rgba(255, 46, 99, 0.15),
+    inset 0 0 30px rgba(255, 255, 255, 0.05);
+  animation: gifFloat 4s ease-in-out infinite;
+  border: 4px solid rgba(255, 180, 200, 0.4);
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.celebration-gif::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, var(--rose-red), var(--gold-accent));
+  border-radius: 35px;
+  z-index: -1;
+  opacity: 0.15;
+  filter: blur(15px);
+  animation: gifGlow 2s ease-in-out infinite;
+}
+
+@keyframes gifFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateY(5deg);
+  }
+}
+
+@keyframes gifGlow {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ========== SUCCESS TEXT ========== */
+.success-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #b60f47;
+  margin: 12px 0;
+  animation: textFadeIn 1.2s ease-in-out;
+  text-shadow: 0 0 8px rgba(255, 107, 157, 0.2);
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.success-subtext {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #990838;
+  margin-top: 12px;
+  animation: textFadeIn 1.8s ease-in-out;
+  text-shadow: 0 0 6px rgba(255, 180, 200, 0.15);
+}
+
+/* ========== CONFETTI BURST ========== */
+@keyframes confettiBurst {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200vh) rotate(720deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  .home-card,
+  .success-card {
+    padding: 20px 25px;
+    margin: 20px;
+    border-radius: 25px;
+  }
+
+  .question {
+    font-size: 1.4rem;
+  }
+
+  .yes-button,
+  .no-button {
+    padding: 12px 35px;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .success-title {
+    font-size: 2rem;
+  }
+
+  .celebration-gif {
+    width: 200px;
+    height: 200px;
+  }
+
+  .success-text {
+    font-size: 1.3rem;
+  }
+
+  .success-subtext {
+    font-size: 1.1rem;
+  }
+
+  .petal {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ========== 3D TILT EFFECT ON HOVER ========== */
+.home-card:hover,
+.success-card:hover {
+  transform: scale(1.02) rotateX(2deg) rotateY(2deg);
+  transition: transform 0.5s ease;
+}
+
+/* ========== MAGICAL CURSOR TRAIL (Optional Enhancement) ========== */
+@media (hover: hover) {
+  .home-container,
+  .success-container {
+    cursor:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="%23ff6b9d" opacity="0.5"/></svg>'),
+      auto;
+  }
+}
